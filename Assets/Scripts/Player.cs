@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Transform fishSprite;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         // Obtener los límites de pantalla
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
         screenLimit_y = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height, 0)).y;
     }
 
-    // Update is called once per frame
+  
     void Update()
     {
         // Desplazamiento

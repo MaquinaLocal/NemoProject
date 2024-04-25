@@ -10,6 +10,7 @@ public class FishAI : MonoBehaviour
     public float speed = 1.5f;
     private float screenLimit_x;
     private int dir = 1;
+    private float size;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class FishAI : MonoBehaviour
 
         // Cambiar tamaño de forma aleatoria
         float randomSize = Random.Range(0.5f, 2.5f);
+        size = randomSize;
         transform.localScale = new Vector3(randomSize, randomSize, randomSize);
     }
 
@@ -39,5 +41,11 @@ public class FishAI : MonoBehaviour
         }
     
         transform.position = currentPosition;
+    }
+
+    // Getter de variable tamaño
+    public float GetSize()
+    {
+        return size;
     }
 }

@@ -587,8 +587,8 @@ GameObject:
   - component: {fileID: 1353041079}
   - component: {fileID: 1353041078}
   - component: {fileID: 1353041080}
-  - component: {fileID: 1353041082}
   - component: {fileID: 1353041081}
+  - component: {fileID: 1353041082}
   m_Layer: 0
   m_Name: Nemo
   m_TagString: Fish
@@ -675,9 +675,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5aa23c0a2a861241aae02a4bc7528b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 20
   fishSprite: {fileID: 1353041079}
   playerUI: {fileID: 286335212}
+  rb: {fileID: 1353041082}
 --- !u!61 &1353041081
 BoxCollider2D:
   m_ObjectHideFlags: 0

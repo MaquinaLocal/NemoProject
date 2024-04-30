@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 
     private float screenLimit_x;
     private float screenLimit_y;
+    private Vector3 targetPosition;
 
     private float size;
     private int playerPoints = 0;
@@ -37,9 +38,30 @@ public class Player : MonoBehaviour
   
     void Update()
     {
-        MovePlayerToLocation();
+        if (Input.GetMouseButton(0))
+        {
+            // Click a posición en pantalla
+            targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            targetPosition.z = 0f;
+        }
 
+        // Diferencia entre jugador y lugar del click
+        Vector2 moveDirection = (targetPosition - transform.position).normalized;
         
+        // Rotación
+        if (moveDirection.x < 0)
+            fishSprite.rotation = Quaternion.Euler(0, 180, 0);
+        else
+            fishSprite.rotation = Quaternion.Euler(0, 0, 0);
+
+        if (rb.position.x != targetPosition.x)
+        {
+            // Movimiento usando Rigidbody
+            rb.MovePosition(rb.position + moveDirection * speed * Time.deltaTime);
+
+        }    
+        
+
         /*
         Vector3 currentPosition = transform.position;
 
@@ -87,36 +109,8 @@ public class Player : MonoBehaviour
         // Colisión con burbuja
         if (collision.gameObject.CompareTag("Bubble"))
         {
+            Debug.Log("colisiono");
             bubbleImage.SetActive(true);
         }
-    }
-
-
-    // Movimiento de Jugador por Mouse
-    private void MovePlayerToLocation()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            // Click a posición en pantalla
-            Vector3 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            targetPosition.z = 0f;
-
-            Debug.Log(targetPosition);
-
-            // Diferencia entre jugador y lugar del click
-            Vector2 moveDirection = (targetPosition - transform.position).normalized;
-
-            // Rotación
-            if (moveDirection.x < 0) 
-                fishSprite.rotation = Quaternion.Euler(0, 180, 0);
-            else 
-                fishSprite.rotation = Quaternion.Euler(0, 0, 0);
-
-            // Movimiento usando Rigidbody
-            rb.MovePosition(rb.position + moveDirection * speed * Time.deltaTime);
-           
-        }
-
-
     }
 }

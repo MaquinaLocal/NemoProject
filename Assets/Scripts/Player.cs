@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform fishSprite;
     [SerializeField] private PlayerUI playerUI;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private GameObject bubbleImage;
 
     
     void Start()
@@ -29,6 +30,8 @@ public class Player : MonoBehaviour
 
         // Obtener tamaño de jugador
         size = transform.localScale.x;
+
+        bubbleImage.SetActive(false);
     }
 
   
@@ -43,12 +46,14 @@ public class Player : MonoBehaviour
         currentPosition.y = Mathf.Clamp(currentPosition.y, -screenLimit_y, screenLimit_y);
 
         transform.position = currentPosition;
+
     }
 
 
     // Colisión con otros peces
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Colisión con peces
         if (collision.gameObject.CompareTag("Fish"))
         {
             // Comparación de tamaños
@@ -75,6 +80,12 @@ public class Player : MonoBehaviour
                 // Establecer condición de derrota
                 GameManager.Instance.UpdateStates(States.GameOver);
             }
+        }
+
+        // Colisión con burbuja
+        if (collision.gameObject.CompareTag("Bubble"))
+        {
+            bubbleImage.SetActive(true);
         }
     }
 

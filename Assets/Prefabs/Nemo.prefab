@@ -103,7 +103,7 @@ MonoBehaviour:
   fishSprite: {fileID: 4112565934468467610}
   playerUI: {fileID: 0}
   rb: {fileID: 9024783637462610163}
-  bubbleImage: {fileID: 21300000, guid: a050e0d6f22cb274c832286921998cd5, type: 3}
+  bubbleImage: {fileID: 7048206152097502727, guid: 48d761316c8c73248957197fa3d68c6a, type: 3}
 --- !u!61 &445369045586697858
 BoxCollider2D:
   m_ObjectHideFlags: 0

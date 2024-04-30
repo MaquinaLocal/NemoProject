@@ -39,6 +39,8 @@ public class Player : MonoBehaviour
     {
         MovePlayerToLocation();
 
+        
+        /*
         Vector3 currentPosition = transform.position;
 
         // Establecer el limite min y max de desplazamiento
@@ -46,7 +48,7 @@ public class Player : MonoBehaviour
         currentPosition.y = Mathf.Clamp(currentPosition.y, -screenLimit_y, screenLimit_y);
 
         transform.position = currentPosition;
-
+        */
     }
 
 
@@ -99,6 +101,8 @@ public class Player : MonoBehaviour
             Vector3 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             targetPosition.z = 0f;
 
+            Debug.Log(targetPosition);
+
             // Diferencia entre jugador y lugar del click
             Vector2 moveDirection = (targetPosition - transform.position).normalized;
 
@@ -111,6 +115,8 @@ public class Player : MonoBehaviour
             // Movimiento usando Rigidbody
             rb.MovePosition(rb.position + moveDirection * speed * Time.deltaTime);
            
-        }        
+        }
+
+
     }
 }
